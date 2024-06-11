@@ -1,0 +1,15 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyc
+
+# Packaging
+dist/
+build/
+*.egg-info/
+
+#Local environment
+venv/
+*.env
+.env/

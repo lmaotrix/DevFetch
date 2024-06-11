@@ -75,5 +75,8 @@ def open_with_chrome(url):
         webbrowser.open(url)
     
 
-if __name__ == "__main__":
+def main():
     create_url()
+
+if __name__ == "__main__":
+    main()
