@@ -10,7 +10,7 @@ function s {
 
 # Add the alias to current user Powershell profile
 $profilePath = $PROFILE.CurrentUserAllHosts
-Add.Content -Path $profilePath -Value $aliasScript
+Add-Content -Path $profilePath -Value $aliasScript
 
 Write-Host "DevFetch installed successfully. You can now use 's' to execute the script."
 
