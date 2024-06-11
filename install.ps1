@@ -1,10 +1,13 @@
 # Install the CLI tool
 pip install .
 
-# Define an alias for CLI tool
+# Get the full path to the devfetch script
+$scriptPath = Join-Path -Path $PWD -ChildPath "devfetch.ps1"
+
+# Define an alias for CLI tool with the full path to devfetch script
 $aliasScript = @"
 function s {
-    & devfetch
+    & '$scriptPath'
 }
 "@
 
