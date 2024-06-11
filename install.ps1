@@ -2,7 +2,7 @@
 pip install .
 
 # Get the full path to the devfetch script
-$scriptPath = Join-Path -Path $PWD -ChildPath "devfetch.ps1"
+$scriptPath = Join-Path -Path $PWD -ChildPath "script.py"
 
 # Define an alias for CLI tool with the full path to devfetch script
 $aliasScript = @"
