@@ -1,8 +1,16 @@
 # Install the CLI tool
 pip install .
 
-# Create an alias for CLI tool
-Add-Content -Path $PROFILE.AllUsersAllHosts -Value "`nfunction s { & devfetch }"
+# Define an alias for CLI tool
+$aliasScript = @"
+function s {
+    & devfetch
+}
+"@
+
+# Add the alias to current user Powershell profile
+$profilePath = $PROFILE.CurrentUserAllHosts
+Add.Content -Path $profilePath -Value $aliasScript
 
 Write-Host "DevFetch installed successfully. You can now use 's' to execute the script."
 
