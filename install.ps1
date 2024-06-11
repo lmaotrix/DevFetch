@@ -2,7 +2,8 @@
 pip install .
 
 # Get the full path to the directory containing the Python package
-$scriptPath = $PWD.Path
+$scriptPath = Join-Path -Path $PWD -ChildPath "DevFetch"  # Adjust "DevFetch" to match the child directory name
+
 
 # Define an alias for CLI tool with the full path to devfetch script
 $aliasScript = @"
