@@ -9,7 +9,7 @@ function s {
 "@
 
 # Specify the path to the PowerShell profile
-$profilePath = [System.IO.Path]::Combine($env:USERPROFILE, 'Documents\WindowsPowershell\profile.ps1')
+$profilePath = [System.IO.Path]::Combine($env:USERPROFILE, 'OneDrive\Documents\WindowsPowershell\profile.ps1')
 
 # Create the profile file if it doesn't exist
 if (-not (Test-Path - Path $profilePath)) {
