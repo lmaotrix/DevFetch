@@ -1,33 +1,32 @@
 # Install the CLI tool
 pip install .
 
-# Get the full path to the directory containing the Python package
-$scriptPath = Join-Path -Path $PWD -ChildPath "DevFetch"  # Adjust "DevFetch" to match the child directory name
-
-
 # Define an alias for CLI tool with the full path to devfetch script
 $aliasScript = @"
 function s {
-    & '$scriptPath'
+    & devfetch
 }
 "@
 
 # Specify the path to the PowerShell profile
-$profileDir = "$env:USERPROFILE\OneDrive\Documents\WindowsPowerShell"
-$profilePath = Join-Path -Path $profileDir -ChildPath "profile.ps1"
-
-# Create the directory if it doesn't exist
-if (-not (Test-Path -Path $profileDir)) {
-    New-Item -Path $profileDir -ItemType Directory -Force
-}
+$profilePath = [System.IO.Path]::Combine($env:USERPROFILE, 'Documents\WindowsPowershell\profile.ps1')
 
 # Create the profile file if it doesn't exist
-if (-not (Test-Path -Path $profilePath)) {
+if (-not (Test-Path - Path $profilePath)) {
     New-Item -Path $profilePath -ItemType File -Force
 }
 
 # Add the alias to the PowerShell profile
 Add-Content -Path $profilePath -Value $aliasScript
+
+# Source the profile to make the alias available in the current session
+if (Test-Path -Path $profilePath) {
+    . $profilePath
+    Write-Host "Profile script executed successfully."
+} else {
+    Write-Host "Profile script not found at: $profilePath"
+}
+
 
 Write-Host "DevFetch installed successfully. You can now use 's' to execute the script."
 
