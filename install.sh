@@ -1,39 +1,20 @@
 #!/bin/bash
 
-# Install the CLI tool
-pip install .
+# Install the package
+pip install -i https://test.pypi.org/simple/ DevFetch==1.0.0
 
-# Define an alias for CLI tool
-aliasScript="alias s='devfetch'"
+# Get the directory where the script is installed
+installDir=$(dirname "$(command -v s)")
 
-# Add the alias to the appropriate profile script
-if [ -f "$HOME/.bashrc" ]; then
-    echo "$aliasScript" >> "$HOME/.bashrc"
-elif [ -f "$HOME/.zshrc" ]; then
-    echo "$aliasScript" >> "$HOME/.zshrc"
-elif [ -f "$HOME/.profile" ]; then
-    echo "$aliasScript" >> "$HOME/.profile"
+# Add the directory to the system's PATH based on the operating system
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    echo "export PATH=\"$installDir:\$PATH\"" >> ~/.bashrc
+    source ~/.bashrc
+    echo "Package installed and added to PATH successfully."
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "export PATH=\"$installDir:\$PATH\"" >> ~/.bash_profile
+    source ~/.bash_profile
+    echo "Package installed and added to PATH successfully."
 else
-    echo "No suitable profile file found to add the alias."
-    echo "$aliasScript" >> "$HOME/.bashrc"
+    echo "Unsupported operating system."
 fi
-
-# Source the profile script to make the alias available in the current session
-if [ -f "$HOME/.bashrc" ]; then
-    source "$HOME/.bashrc"
-elif [ -f "$HOME/.zshrc" ]; then
-    source "$HOME/.zshrc"
-elif [ -f "$HOME/.profile" ]; then
-    source "$HOME/.profile"
-else
-    echo "No suitable profile file found to source."
-fi
-
-echo "DevFetch installed successfully. You can now use 's' to execute the script."
-
-# Grant execution permissions to the script
-chmod +x install.sh
-
-
-
-
