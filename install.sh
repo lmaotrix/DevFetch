@@ -1,15 +1,26 @@
 #!/bin/bash
 
-# Install the package
+#!/bin/bash
+
+# Function to check if a command exists
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# Install the CLI tool
 pip install .
 
-# Add alias to the bash profile
-echo 'alias s="python3 -m devfetch"' >> ~/.bashrc
+# Determine the shell profile
+if [ -n "$ZSH_VERSION" ]; then
+    SHELL_PROFILE="$HOME/.zshrc"
+elif [ -n "$BASH_VERSION" ]; then
+    SHELL_PROFILE="$HOME/.bashrc"
+else
+    SHELL_PROFILE="$HOME/.profile"
+fi
 
-# For zsh users
-echo 'alias s="python3 -m devfetch"' >> ~/.zshrc
-
-# Reload the bash profile
-source ~/.bashrc
+# Add alias to the shell profile
+echo 'alias s="python3 -m DevFetch.script"' >> $SHELL_PROFILE
+source $SHELL_PROFILE
 
 echo "DevFetch installed successfully. You can now use 's' to execute the script."
