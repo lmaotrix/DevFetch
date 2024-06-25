@@ -22,6 +22,6 @@ if not exist "%profilePath%" (
 )
 
 REM Add the alias to the PowerShell profile
-echo function s { python -m DevFetch.script } >> "%profilePath%"
+echo function s { python -m DevFetch.script $args } >> "%profilePath%"
 
 echo DevFetch installed successfully. You can now use 's' to execute the script.
