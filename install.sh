@@ -36,6 +36,7 @@ install_with_pipx() {
 
     pipx ensurepath
     source ~/.bashrc
+
     pipx install DevFetch
     if [ $? -ne 0 ]; then
         echo "pipx installation failed. Please make sure you have the necessary permissions and pipx is installed."
@@ -78,11 +79,11 @@ if [ -f "/etc/manjaro-release" ] || [ -f "/etc/arch-release" ]; then
 fi
 
 # Install the package system-wide
-pip install .
+pip install DevFetch
 
 # Check if the installation was successful
 if [ $? -ne 0 ]; then
-    echo "Installation failed. Trying to install with pipx..."
+    echo "System-wide installation failed. Trying to install with pipx..."
     install_with_pipx
 fi
 
