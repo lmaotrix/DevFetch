@@ -12,7 +12,7 @@ valid_websites = [
 ]
 
 
-url = "https://www.google.com/search?q="
+url = "https://www.google.com/search?hl=en&q="
 
 chrome_paths = {
     'Windows': r'C:\Program Files\Google\Chrome\Application\chrome.exe',

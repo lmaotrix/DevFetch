@@ -5,11 +5,19 @@ __pycache__/
 *.pyc
 
 # Packaging
+*.whl
+
+# pip cache
 dist/
 build/
 *.egg-info/
 
-#Local environment
+# Local environment
 venv/
 *.env
 .env/
+ENV/
+
+# VS Code
+.vscode/
+
